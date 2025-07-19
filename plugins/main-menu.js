@@ -64,31 +64,33 @@ let handler = async (m, { conn, args }) => {
 ┃   Ver opciones de configuración 
     de grupos.
 ┃ ⌘ *#hidetag*
-┃  Envia un mensaje mencionando a 
-   todos los usuarios.
+┃   Envia un mensaje mencionando 
+    a todos los usuarios.
 ┃ ⌘ *#gp • #infogrupo*
 ┃   Ver la información del grupo.
 ┃ ⌘ #linea • #listonline
-┃  Ver la lista de los usuarios en línea.
+┃   Ver la lista de los usuarios 
+    en línea.
 ┃ ⌘ *#setwelcome*
-┃   Establecer un mensaje de bienvenida
-┃   personalizado.
+┃   Establecer un mensaje de 
+    bienvenida personalizado.
 ┃ ⌘ *#setbye*
-┃   Establecer un mensaje de despedida 
-┃   personalizado.
+┃   Establecer un mensaje de 
+    despedida personalizado.
 ┃ ⌘ *#link*
 ┃   El bot envía el link del grupo.
 ┃ ⌘ *#admins • #admin*
-┃   Mencionar a los admins para solicitar 
-┃   ayuda.
+┃   Mencionar a los admins para
+    solicitar ayuda.
 ┃ ⌘ *#restablecer • #revoke*
 ┃   Restablecer el enlace del grupo.
 ┃ ⌘ *#grupo • #group* [open / abrir]
-┃   Cambia ajustes del grupo para que todos 
-┃   los usuarios envíen mensaje.
+┃   Cambia ajustes del grupo para 
+    que todos los usuarios envíen mensaje.
 ┃ ⌘ *#kick* [número / mención]
 ┃  Elimina un usuario de un grupo.
-┃ ⌘ #add • #añadir • #agregar • #invitar                      [   número]
+┃ ⌘ *#add* • *#añadir* • *#agregar* •      *#invitar*              
+     [número]
 ┃   Invita a un usuario a tu grupo.
 ┃ ⌘ *#promote* [mención / etiquetar]
 ┃   El bot da administrador al usuario 
