@@ -61,40 +61,41 @@ let handler = async (m, { conn, args }) => {
 
 ┏━━⪩「 𝐆𝐫𝐮𝐩𝐨𝐬 」⪨
 ┃ ⌘ *#config • #on*
-┃   Ver opciones de configuración de 
-┃grupos.
+┃   Ver opciones de configuración 
+    de grupos.
 ┃ ⌘ *#hidetag*
-┃  Envia un mensaje mencionando a todos los usuarios.
+┃  Envia un mensaje mencionando a 
+   todos los usuarios.
 ┃ ⌘ *#gp • #infogrupo*
 ┃   Ver la información del grupo.
 ┃ ⌘ #linea • #listonline
 ┃  Ver la lista de los usuarios en línea.
 ┃ ⌘ *#setwelcome*
 ┃   Establecer un mensaje de bienvenida
-┃personalizado.
+┃   personalizado.
 ┃ ⌘ *#setbye*
 ┃   Establecer un mensaje de despedida 
-┃personalizado.
+┃   personalizado.
 ┃ ⌘ *#link*
 ┃   El bot envía el link del grupo.
 ┃ ⌘ *#admins • #admin*
 ┃   Mencionar a los admins para solicitar 
-┃ayuda.
+┃   ayuda.
 ┃ ⌘ *#restablecer • #revoke*
 ┃   Restablecer el enlace del grupo.
 ┃ ⌘ *#grupo • #group* [open / abrir]
 ┃   Cambia ajustes del grupo para que todos 
-┃los usuarios envíen mensaje.
+┃   los usuarios envíen mensaje.
 ┃ ⌘ *#kick* [número / mención]
 ┃  Elimina un usuario de un grupo.
-┃ ⌘ #add • #añadir • #agregar • #invitar [número]
+┃ ⌘ #add • #añadir • #agregar • #invitar                      [   número]
 ┃   Invita a un usuario a tu grupo.
 ┃ ⌘ *#promote* [mención / etiquetar]
 ┃   El bot da administrador al usuario 
-┃mencionado.
+┃   mencionado.
 ┃ ⌘ *#demote* [mención / etiquetar]
 ┃   El bot quita administrador al usuario 
-┃mencionado.
+┃   mencionado.
 ┃ ⌘ *#gpbanner • #groupimg*
 ┃   Cambiar la imagen del grupo.
 ┃ ⌘ *#gpname • #groupname*
@@ -353,19 +354,25 @@ let handler = async (m, { conn, args }) => {
 ┃ ⌘ *#divorce*  
 ┃ ➤ ✦ Divorciarte de tu pareja.
 ┃ ⌘ *#setgenre • #setgenero*  
-┃ ➤ ✦ Establece tu género en el perfil del bot.
+┃ ➤ ✦ Establece tu género en el 
+    perfil del bot.
 ┃ ⌘ *#delgenre • #delgenero*  
 ┃ ➤ ✦ Elimina tu género del perfil del bot.
 ┃ ⌘ *#setbirth • #setnacimiento*  
-┃ ➤ ✦ Establece tu fecha de nacimiento en el perfil del bot.
+┃ ➤ ✦ Establece tu fecha de nacimiento 
+     en el perfil del bot.
 ┃ ⌘ *#delbirth • #delnacimiento*  
-┃ ➤ ✦ Elimina tu fecha de nacimiento del perfil del bot.
+┃ ➤ ✦ Elimina tu fecha de nacimiento
+     del perfil del bot.
 ┃ ⌘ *#setdescription • #setdesc*  
-┃ ➤ ✦ Establece una descripción en tu perfil del bot.
+┃ ➤ ✦ Establece una descripción en 
+    tu perfil del bot.
 ┃ ⌘ *#deldescription • #deldesc*  
-┃ ➤ ✦ Elimina la descripción de tu perfil del bot.
+┃ ➤ ✦ Elimina la descripción de tu 
+    perfil del bot.
 ┃ ⌘ *#lb • #lboard* + <Página>  
-┃ ➤ ✦ Top de usuarios con más (experiencia y nivel).
+┃ ➤ ✦ Top de usuarios con más 
+    (experiencia y nivel).
 ┃ ⌘ *#level • #lvl* + <@Mención>  
 ┃ ➤ ✦ Ver tu nivel y experiencia actual.
 ┃ ⌘ *#comprarpremium • #premium*  
