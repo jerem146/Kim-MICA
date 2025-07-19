@@ -50,7 +50,7 @@ global.yukiJadibts = true
 
 global.packname = '💖✧ 𝐊𝐢𝐦-𝐌𝐈𝐂𝐀 ✧💖'
 global.botname = '💖✧ MICA ✧💖'
-global.wm = '✿◟Yυƙι Sυσυ◞✿'
+global.wm = '💗⌜ 𝐆𝐑𝐈𝐒 𝑴𝒊𝒄𝒂 ⌟💗'
 global.author = '© mᥲძᥱ ᥕі𝗍һ ᑲᥡ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜'
 global.textbot = 'Yuki, mᥲძᥱ ᥕі𝗍һ ᑲᥡ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ'
