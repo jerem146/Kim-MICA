@@ -3,8 +3,8 @@
 - etiqueta en un grupo a todos
 - https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
 */
-const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, command, usedPrefix }) => {
-  if (usedPrefix == 'a' || usedPrefix == 'A') return;
+const handler = async (m, { isOwner, isAdmin, conn, args, participants, usedPrefix }) => {
+  if (usedPrefix === 'a' || usedPrefix === 'A') return;
 
   const customEmoji = global.db.data.chats[m.chat]?.customEmoji || '🍫';
   m.react(customEmoji);
@@ -14,20 +14,25 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
     throw false;
   }
 
-  const pesan = args.join` `;
-  const oi = `*» INFO :* ${pesan}`;
-  let teks = `*!  MENCION GENERAL  !*\n  *PARA ${participants.length} MIEMBROS* 🗣️\n\n ${oi}\n\n╭  ┄ 𝅄 ۪꒰ \`⡞᪲=͟͟͞${botname} ≼᳞ׄ\` ꒱ ۟ 𝅄 ┄\n`;
-  for (const mem of participants) {
-    teks += `┊${customEmoji} @${mem.id.split('@')[0]}\n`;
-  }
-  teks += `╰⸼ ┄ ┄ ┄ ─  ꒰  ׅ୭ *${vs}* ୧ ׅ ꒱  ┄  ─ ┄ ⸼`;
+  const mensaje = args.join(' ') || '¡Has sido invocado por los dioses del grupo!';
+  const textoExtra = `╰⸼ ┄ ┄ ┄ ─ ꒰ ୭ *${global.vs || 'Versión'}* ୧ ꒱ ┄ ─ ┄ ⸼`;
 
-  conn.sendMessage(m.chat, { text: teks, mentions: participants.map((a) => a.id) });
+  const mentions = participants.map(p => p.id);
+  let etiquetas = '';
+  for (const u of participants) {
+    etiquetas += `@${u.id.split('@')[0]} `;
+  }
+
+  await conn.sendMessage(m.chat, {
+    image: { url: 'https://files.catbox.moe/5nmy7i.jpg' },
+    caption: `*「 CORTANA 2.0 TE HA INVOCADO 」*\n\n${mensaje}\n\n${etiquetas}\n\n${textoExtra}`,
+    mentions
+  });
 };
 
-handler.help = ['todos *<mensaje opcional>*'];
+handler.help = ['invocar *<mensaje opcional>*'];
 handler.tags = ['group'];
-handler.command = ['todos', 'invocar', 'tagall']
+handler.command = ['invocar', 'todos', 'tagall'];
 handler.admin = true;
 handler.group = true;
 
