@@ -49,7 +49,7 @@ global.yukiJadibts = true
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.packname = '💖✧ 𝐊𝐢𝐦-𝐌𝐈𝐂𝐀 ✧💖'
-global.botname = 'ᥡᥙkі sᥙ᥆ᥙ'
+global.botname = '💖✧ MICA ✧💖'
 global.wm = '✿◟Yυƙι Sυσυ◞✿'
 global.author = '© mᥲძᥱ ᥕі𝗍һ ᑲᥡ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜'
 global.dev = '© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜'
