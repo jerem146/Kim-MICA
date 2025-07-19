@@ -41,8 +41,8 @@ handler.help = ["mega"];
 handler.tags = ["descargas"];
 handler.command = ['mega', 'mg']
 handler.group = true;
-handler.register = true;
-handler.coin = 5;
+handler.register = false;
+handler.coin = 0;
 
 export default handler;
 
