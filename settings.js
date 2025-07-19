@@ -48,7 +48,7 @@ global.yukiJadibts = true
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = '⪛✰ 𝐘𝐮𝐤𝐢-𝐒𝐮𝐨𝐮-𝐁𝐨𝐭 ✰⪜'
+global.packname = '💖✧ 𝐊𝐢𝐦-𝐌𝐈𝐂𝐀 ✧💖'
 global.botname = 'ᥡᥙkі sᥙ᥆ᥙ'
 global.wm = '✿◟Yυƙι Sυσυ◞✿'
 global.author = '© mᥲძᥱ ᥕі𝗍һ ᑲᥡ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜'
