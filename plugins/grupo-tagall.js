@@ -14,7 +14,7 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
   const total = participants.length;
   const mensaje = args.join(' ') || '¡Atención a todos!';
 
-  let teks = `*${grupo}*\n\n`;
+  let teks = ` *${grupo}*\n\n`;
   teks += `🙋‍♂️ *Invocado por:* ${invocador}\n`;
   teks += `👥 *Total:* ${total} miembros\n\n`;
   teks += `📝 *Anuncio:* ${mensaje}\n\n`;
