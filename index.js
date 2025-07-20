@@ -41,7 +41,7 @@ let { say } = cfonts
 
 console.log(chalk.bold.redBright(`\n✰ NICIANDO 💗⌜ 𝐆𝐑𝐈𝐒 𝑴𝒊𝒄𝒂 ⌟💗\n`))
 
-say('𝐆𝐑𝐈𝐒 𝑴𝒊𝒄𝒂', {
+say('GRIS-MICA', {
 font: 'block',
 align: 'center',
 colors: ['magentaBright']
