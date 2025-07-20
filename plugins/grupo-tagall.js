@@ -1,33 +1,43 @@
 /* 
 - tagall By Angel-OFC  
 - etiqueta en un grupo a todos
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
-*/
-const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, command, usedPrefix }) => {
+- const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, command, usedPrefix, groupMetadata }) => {
   if (usedPrefix == 'a' || usedPrefix == 'A') return;
 
-  const customEmoji = global.db.data.chats[m.chat]?.customEmoji || '';
-  m.react(customEmoji);
+  const customEmoji = global.db.data.chats[m.chat]?.customEmoji || '✨';
+  await m.react(customEmoji);
 
   if (!(isAdmin || isOwner)) {
     global.dfail('admin', m, conn);
     throw false;
   }
 
-  const pesan = args.join` `;
-  const oi = `*» INFO :* ${pesan}`;
-  let teks = `*!  MENCION GENERAL  !*\n  *PARA ${participants.length} MIEMBROS* 🗣️\n\n ${oi}\n\n╭  ┄ 𝅄 ۪꒰ \`⡞᪲=͟͟͞${botname} ≼᳞ׄ\` ꒱ ۟ 𝅄 ┄\n`;
+  const grupo = groupMetadata?.subject || 'Este grupo';
+  const invocador = `@${m.sender.split('@')[0]}`;
+  const total = participants.length;
+  const mensaje = args.join(' ') || '¡Atención a todos!';
+
+  let teks = `📢 *MENCIONANDO A TODOS EN:* _${grupo}_\n\n`;
+  teks += `🙋‍♂️ *Invocado por:* ${invocador}\n`;
+  teks += `👥 *Total:* ${total} miembros\n\n`;
+  teks += `📝 *Anuncio:* ${mensaje}\n\n`;
+  teks += `╭  ┄ 𝅄 ۪꒰ \`⡞᪲=͟͟͞${botname} ≼᳞ׄ\` ꒱ ۟ 𝅄 ┄\n`;
+
   for (const mem of participants) {
     teks += `┊${customEmoji} @${mem.id.split('@')[0]}\n`;
   }
+
   teks += `╰⸼ ┄ ┄ ┄ ─  ꒰  ׅ୭ *${vs}* ୧ ׅ ꒱  ┄  ─ ┄ ⸼`;
 
-  conn.sendMessage(m.chat, { text: teks, mentions: participants.map((a) => a.id) });
+  await conn.sendMessage(m.chat, {
+    text: teks,
+    mentions: [m.sender, ...participants.map(a => a.id)],
+  });
 };
 
-handler.help = ['todos *<mensaje opcional>*'];
+handler.help = ['todos <mensaje opcional>'];
 handler.tags = ['group'];
-handler.command = ['todos', 'invocar', 'tagall']
+handler.command = ['todos', 'invocar', 'tagall'];
 handler.admin = true;
 handler.group = true;
 
