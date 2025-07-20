@@ -18,7 +18,7 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": GRIS ",
+"homepage": "GRIS",
 "author": {
 "name": "DAREK"
 },
