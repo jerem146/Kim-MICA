@@ -1,7 +1,4 @@
-/* 
-- tagall By Angel-OFC  
-- etiqueta en un grupo a todos
-- const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, command, usedPrefix, groupMetadata }) => {
+const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, command, usedPrefix, groupMetadata }) => {
   if (usedPrefix == 'a' || usedPrefix == 'A') return;
 
   const customEmoji = global.db.data.chats[m.chat]?.customEmoji || '✨';
