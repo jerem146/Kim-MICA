@@ -1,6 +1,6 @@
 {
-"name": "YukiBot-MD",
-"version": "2.2.5",
+"name": "GRIS-MICA",
+"version": "2.2.2",
 "description": "WhatsApp Bot Multi Device",
 "main": "index.js",
 "type": "module",
@@ -18,16 +18,16 @@
 "eslint": "eslint .",
 "eslintfix": "eslint --fix ."
 },
-"homepage": "https://github.com/The-King-Destroy/Yuki_Suou-Bot",
+"homepage": GRIS ",
 "author": {
-"name": "The-King-Destroy"
+"name": "DAREK"
 },
 "repository": {
 "type": "git",
-"url": "git+https://github.com/The-King-Destroy/Yuki_Suou-Bot.git"
+"url": ""
 },
 "bugs": {
-"url": "https://github.com/The-King-Destroy/Yuki_Suou-Bot/issues"
+"url": ""
 },
 "license": "MIT-License",
 "dependencies": {
