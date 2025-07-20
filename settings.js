@@ -35,7 +35,7 @@ global.prems = []
 
 global.libreria = 'Baileys'
 global.baileys = 'V 6.7.17' 
-global.vs = '2.2.5'
+global.vs = '2.2.2'
 global.nameqr = '𝐆𝐑𝐈𝐒 𝑴𝒊𝒄𝒂 '
 global.namebot = '💖✧ MICA ✧💖'
 global.sessions = 'Sessions'
