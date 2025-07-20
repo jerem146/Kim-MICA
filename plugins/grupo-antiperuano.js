@@ -1,25 +1,19 @@
-let handler = async (m, { conn }) => {
-  const chat = global.db.data.chats[m.id] || {}
-  if (!chat.antiperunuano) return
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+  let isEnable = /true|on|enable|(turn)?on/i.test(command)
+  let chat = global.db.data.chats[m.chat]
 
-  if (!m.action || m.action !== 'add') return
-  if (!m.participants || !Array.isArray(m.participants)) return
+  if (!chat) chat = global.db.data.chats[m.chat] = {}
 
-  for (let user of m.participants) {
-    if (user.startsWith('51') && m.id.endsWith('@g.us')) {
-      try {
-        await conn.groupParticipantsUpdate(m.id, [user], 'remove')
-        await conn.sendMessage(m.id, {
-          text: `🚫 *Usuario @${user.split('@')[0]} eliminado automáticamente por tener número peruano.*`,
-          mentions: [user]
-        })
-      } catch (e) {
-        console.error(`Error eliminando a ${user}:`, e)
-      }
-    }
-  }
+  chat.antiperunuano = isEnable
+
+  m.reply(`🛡️ El sistema *AntiPerú* fue *${isEnable ? 'activado ✅' : 'desactivado ❌'}* correctamente.`)
 }
 
+handler.help = ['antiperunuano on', 'antiperunuano off']
+handler.tags = ['group', 'antifake']
+handler.command = /^((anti)?perunuano|peruano|antiperuano)\s?(on|off)?$/i
 handler.group = true
-handler.event = 'group-participants.update'
+handler.admin = true
+handler.botAdmin = true
+
 export default handler
