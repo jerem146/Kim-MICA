@@ -1,53 +1,34 @@
-//code traído por Xi_Crew
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
-import * as fs from 'fs'
+/* 
+- tagall By Angel-OFC  
+- etiqueta en un grupo a todos
+- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
+*/
+const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, command, usedPrefix }) => {
+  if (usedPrefix == 'a' || usedPrefix == 'A') return;
 
-var handler = async (m, { conn, text, participants, isOwner, isAdmin }) => {
+  const customEmoji = global.db.data.chats[m.chat]?.customEmoji || '🍫';
+  m.react(customEmoji);
 
-if (!m.quoted && !text) return conn.reply(m.chat, ❀ Debes enviar un texto para hacer un tag., m)
+  if (!(isAdmin || isOwner)) {
+    global.dfail('admin', m, conn);
+    throw false;
+  }
 
-try {
+  const pesan = args.join` `;
+  const oi = `*» INFO :* ${pesan}`;
+  let teks = `*!  MENCION GENERAL  !*\n  *PARA ${participants.length} MIEMBROS* 🗣️\n\n ${oi}\n\n╭  ┄ 𝅄 ۪꒰ \`⡞᪲=͟͟͞${botname} ≼᳞ׄ\` ꒱ ۟ 𝅄 ┄\n`;
+  for (const mem of participants) {
+    teks += `┊${customEmoji} @${mem.id.split('@')[0]}\n`;
+  }
+  teks += `╰⸼ ┄ ┄ ┄ ─  ꒰  ׅ୭ *${vs}* ୧ ׅ ꒱  ┄  ─ ┄ ⸼`;
 
-let users = participants.map(u => conn.decodeJid(u.id))
-let q = m.quoted ? m.quoted : m || m.text || m.sender
-let c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender
-let msg = conn.cMod(m.chat, generateWAMessageFromContent(m.chat, { [m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' || c }}, { quoted: null, userJid: conn.user.id }), text || q.text, conn.user.jid, { mentions: users })
-await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+  conn.sendMessage(m.chat, { text: teks, mentions: participants.map((a) => a.id) });
+};
 
-} catch {
+handler.help = ['todos *<mensaje opcional>*'];
+handler.tags = ['group'];
+handler.command = ['todos', 'invocar', 'tagall']
+handler.admin = true;
+handler.group = true;
 
-/**
-[ By @NeKosmic || https://github.com/NeKosmic/ ]
-**/
-
-let users = participants.map(u => conn.decodeJid(u.id))
-let quoted = m.quoted ? m.quoted : m
-let mime = (quoted.msg || quoted).mimetype || ''
-let isMedia = /image|video|sticker|audio/.test(mime)
-let more = String.fromCharCode(8206)
-let masss = more.repeat(850)
-let htextos = ${text ? text : "*¡¡¡Hola!!!*"}
-if ((isMedia && quoted.mtype === 'imageMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, { image: mediax, mentions: users, caption: htextos, mentions: users }, { quoted: null })
-} else if ((isMedia && quoted.mtype === 'videoMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, { video: mediax, mentions: users, mimetype: 'video/mp4', caption: htextos }, { quoted: null })
-} else if ((isMedia && quoted.mtype === 'audioMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, { audio: mediax, mentions: users, mimetype: 'audio/mp4', fileName: Hidetag.mp3 }, { quoted: null })
-} else if ((isMedia && quoted.mtype === 'stickerMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, {sticker: mediax, mentions: users}, { quoted: null })
-} else {
-await conn.relayMessage(m.chat, {extendedTextMessage:{text: ${masss}\n${htextos}\n, ...{ contextInfo: { mentionedJid: users }}}})
-}}
-}
-handler.help = ['hidetag']
-handler.tags = ['grupo']
-handler.command = ['hidetag', 'notificar', 'notify', 'tag']
-handler.group = true
-handler.admin = true
-
-export default handler
-
+export default handler;
