@@ -1,45 +1,35 @@
-let handler = async (m, { conn, command, usedPrefix }) => {
-let img = './src/catalogo.jpg'
-let staff = `ᥫ᭡ *EQUIPO DE AYUDANTES* ❀
-✰ *Dueño* ${creador}
+let handler = async (m, { conn }) => {
+  let img = './src/catalogo.jpg'
+
+  let creador = global.creador || '@TheKingDestroy'
+  let botname = global.botname || 'MiBot'
+  let vs = global.vs || '1.0.0'
+  let libreria = global.libreria || 'Baileys'
+  let baileys = global.baileys || ''
+
+  // Mostrar dueños con nombre y número
+  let dueños = global.owner.map(([num, nombre]) => {
+    let name = nombre ? `👤 *${nombre}*` : '👤 *Dueño*'
+    return `${name}\n> wa.me/${num}`
+  }).join('\n\n')
+
+  let staff = `
+ᥫ᭡ *EQUIPO DE AYUDANTES* ❀
+✰ *Dueño principal:* ${creador}
 ✦ *Bot:* ${botname}
 ⚘ *Versión:* ${vs}
-❖ *Libreria:* ${libreria} ${baileys}
+❖ *Librería:* ${libreria} ${baileys}
 
-❍ *Creador:*
+❍ *Lista de Dueños:*
+${dueños}
+  `.trim()
 
-ᰔᩚ ⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜
-> 🜸 Rol » *Creador*
-> ✧ GitHub » https://github.com/The-King-Destroy
-
-❒ *Colaboradores:*
-
-ᰔᩚ 𝓔𝓶𝓶𝓪 𝓥𝓲𝓸𝓵𝓮𝓽𝓼 𝓥𝓮𝓻𝓼𝓲ó𝓷 
-> 🜸 Rol » *Developer*
-> ✧ GitHub » https://github.com/Elpapiema
-
-ᰔᩚ Niño Piña
-> 🜸 Rol » *Developer*
-> ✧ GitHub » https://github.com/WillZek
-
-✧ ☆꧁༒ĹєǤ𝒆𝐧𝐃༒꧂☆
-> 🜸 Rol » *Developer*
-> ✧ GitHub » https://github.com/Diomar-s
-
-ᰔᩚ I'm Fz' (Tesis)
-> 🜸 Rol » *Developer*
-> ✧ GitHub » https://github.com/FzTeis
-
-ᰔᩚ Legna
-> 🜸 Rol » *Mini-Dev* 
-> ✧ GitHub » https://github.com/Legna-chan
-`
-await conn.sendFile(m.chat, img, 'yuki.jpg', staff.trim(), m)
+  await conn.sendFile(m.chat, img, 'staff.jpg', staff, m)
 }
-  
+
 handler.help = ['staff']
+handler.tags = ['main']
 handler.command = ['colaboradores', 'staff']
 handler.register = false
-handler.tags = ['main']
 
 export default handler
