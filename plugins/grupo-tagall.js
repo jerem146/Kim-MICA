@@ -9,12 +9,12 @@ const handler = async (m, { isOwner, isAdmin, conn, text, participants, args, co
     throw false;
   }
 
-  const grupo = groupMetadata?.subject || 'Este grupo';
+  const grupo = groupMetadata?.subject || 'Grupo';
   const invocador = `@${m.sender.split('@')[0]}`;
   const total = participants.length;
   const mensaje = args.join(' ') || '¡Atención a todos!';
 
-  let teks = `📢 *MENCIONANDO A TODOS EN:* _${grupo}_\n\n`;
+  let teks = `*${grupo}*\n\n`;
   teks += `🙋‍♂️ *Invocado por:* ${invocador}\n`;
   teks += `👥 *Total:* ${total} miembros\n\n`;
   teks += `📝 *Anuncio:* ${mensaje}\n\n`;
