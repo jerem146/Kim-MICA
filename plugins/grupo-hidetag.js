@@ -1,48 +1,73 @@
-//code traído por Xi_Crew
+//code traído por Xi_Crew, optimizado por ChatGPT
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
-import * as fs from 'fs'
 
-var handler = async (m, { conn, text, participants, isOwner, isAdmin }) => {
+let handler = async (m, { conn, text, participants }) => {
+  if (!m.quoted && !text) return conn.reply(m.chat, `❀ Debes enviar un texto o responder un mensaje para hacer un tag.`, m)
 
-if (!m.quoted && !text) return conn.reply(m.chat, `❀ Debes enviar un texto para hacer un tag.`, m)
+  const users = participants.map(u => conn.decodeJid(u.id))
+  const quoted = m.quoted ? m.quoted : m
+  const mime = (quoted.msg || quoted)?.mimetype || ''
+  const isMedia = /image|video|sticker|audio/.test(mime)
+  const caption = text || quoted.text || '*¡¡¡Hola!!!*'
+  const invisible = String.fromCharCode(8206).repeat(850)
 
-try { 
+  try {
+    if (m.quoted) {
+      const quotedMsg = await m.getQuotedObj()
+      const content = {
+        [quotedMsg.mtype]: quotedMsg.message[quotedMsg.mtype]
+      }
 
-let users = participants.map(u => conn.decodeJid(u.id))
-let q = m.quoted ? m.quoted : m || m.text || m.sender
-let c = m.quoted ? await m.getQuotedObj() : m.msg || m.text || m.sender
-let msg = conn.cMod(m.chat, generateWAMessageFromContent(m.chat, { [m.quoted ? q.mtype : 'extendedTextMessage']: m.quoted ? c.message[q.mtype] : { text: '' || c }}, { quoted: null, userJid: conn.user.id }), text || q.text, conn.user.jid, { mentions: users })
-await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+      const msg = generateWAMessageFromContent(m.chat, content, {
+        userJid: conn.user.id,
+        quoted: null
+      })
 
-} catch {  
+      msg.message.extendedTextMessage = {
+        text: caption,
+        contextInfo: { mentionedJid: users }
+      }
 
-/**
-[ By @NeKosmic || https://github.com/NeKosmic/ ]
-**/  
+      await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+    } else {
+      throw 'No quoted'
+    }
 
-let users = participants.map(u => conn.decodeJid(u.id))
-let quoted = m.quoted ? m.quoted : m
-let mime = (quoted.msg || quoted).mimetype || ''
-let isMedia = /image|video|sticker|audio/.test(mime)
-let more = String.fromCharCode(8206)
-let masss = more.repeat(850)
-let htextos = `${text ? text : "*¡¡¡Hola!!!*"}`
-if ((isMedia && quoted.mtype === 'imageMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, { image: mediax, mentions: users, caption: htextos, mentions: users }, { quoted: null })
-} else if ((isMedia && quoted.mtype === 'videoMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, { video: mediax, mentions: users, mimetype: 'video/mp4', caption: htextos }, { quoted: null })
-} else if ((isMedia && quoted.mtype === 'audioMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, { audio: mediax, mentions: users, mimetype: 'audio/mp4', fileName: `Hidetag.mp3` }, { quoted: null })
-} else if ((isMedia && quoted.mtype === 'stickerMessage') && htextos) {
-var mediax = await quoted.download?.()
-conn.sendMessage(m.chat, {sticker: mediax, mentions: users}, { quoted: null })
-} else {
-await conn.relayMessage(m.chat, {extendedTextMessage:{text: `${masss}\n${htextos}\n`, ...{ contextInfo: { mentionedJid: users }}}})
-}}
+  } catch {
+    // fallback por si falla la parte anterior
+    try {
+      if (isMedia) {
+        const media = await quoted.download()
+        let type, msgData
+
+        if (quoted.mtype === 'imageMessage') {
+          type = 'image'
+          msgData = { image: media, caption, mentions: users }
+        } else if (quoted.mtype === 'videoMessage') {
+          type = 'video'
+          msgData = { video: media, caption, mimetype: 'video/mp4', mentions: users }
+        } else if (quoted.mtype === 'audioMessage') {
+          type = 'audio'
+          msgData = { audio: media, mimetype: 'audio/mp4', fileName: `Hidetag.mp3` }
+        } else if (quoted.mtype === 'stickerMessage') {
+          type = 'sticker'
+          msgData = { sticker: media }
+        }
+
+        await conn.sendMessage(m.chat, msgData, { quoted: null })
+      } else {
+        await conn.sendMessage(m.chat, {
+          text: `${invisible}\n${caption}`,
+          mentions: users
+        }, { quoted: null })
+      }
+    } catch (e) {
+      console.error(e)
+      conn.reply(m.chat, `⚠️ Error al enviar el mensaje con etiquetas ocultas.`, m)
+    }
+  }
 }
+
 handler.help = ['hidetag']
 handler.tags = ['grupo']
 handler.command = ['hidetag', 'notificar', 'notify', 'tag']
