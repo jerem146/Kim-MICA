@@ -40,7 +40,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
   }
 
   if (m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_ADD) {
-    const txt = 'ゲ◜៹ New Member ៹◞ゲ'
+    const txt = 'ゲ◜៹ NUEVO MIEMBRO ៹◞ゲ'
     const bienvenida = `┏╼★${textbot}
 ┋「 Bienvenido 」
 ┗╼★ 「 ${taguser} 」
@@ -56,7 +56,7 @@ export async function before(m, { conn, participants, groupMetadata }) {
     m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_REMOVE ||
     m.messageStubType === WAMessageStubType.GROUP_PARTICIPANT_LEAVE
   ) {
-    const txt1 = 'ゲ◜៹ Bye Member ៹◞ゲ'
+    const txt1 = 'ゲ◜៹ BYE MIEMBRO ៹◞ゲ'
     const bye = `┏╼★${textbot}
 ┋「 ADIÓS 👋 」
 ┗╼★ 「 ${taguser} 」
