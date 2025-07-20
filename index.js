@@ -41,13 +41,13 @@ let { say } = cfonts
 
 console.log(chalk.bold.redBright(`\n✰ Iniciando Yuki-Suou-Bot ✰\n`))
 
-say('YukiBot-MD', {
+say('💗⌜ 𝐆𝐑𝐈𝐒 𝑴𝒊𝒄𝒂 ⌟💗', {
 font: 'block',
 align: 'center',
 colors: ['magentaBright']
 })
 
-say(`Developed By • The-King-Destroy`, {
+say(`Darek`, {
 font: 'console',
 align: 'center',
 colors: ['blueBright']
@@ -206,7 +206,7 @@ if (opcion == '1' || methodCodeQR) {
 console.log(chalk.bold.yellow(`\n❐ ESCANEA EL CÓDIGO QR EXPIRA EN 45 SEGUNDOS`))}
 }
 if (connection == 'open') {
-console.log(chalk.bold.green('\n❀ Yuki Suou Conectada con éxito ❀'))
+console.log(chalk.bold.green('\n💗⌜ 𝐆𝐑𝐈𝐒 𝑴𝒊𝒄𝒂 ⌟💗 Conectada con éxito'))
 }
 let reason = new Boom(lastDisconnect?.error)?.output?.statusCode
 if (connection === 'close') {
